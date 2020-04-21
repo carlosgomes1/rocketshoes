@@ -1,26 +1,25 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import './config/ReactotronConfig';
+
+import Routes from './routes';
+import Header from './components/Header';
+
+import store from './store';
+import GlobalStyle from './styles/global';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <Provider store={store}>
+            <BrowserRouter>
+                <Header />
+                <Routes />
+                <GlobalStyle />
+            </BrowserRouter>
+        </Provider>
+    );
 }
 
 export default App;
